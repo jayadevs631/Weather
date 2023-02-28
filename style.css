@@ -1,0 +1,18 @@
+#card1{
+    background:#cfbabaab
+}
+body{ 
+    background-image: url('https://www.climateandweather.net/wp-content/uploads/2022/08/hero-3.jpg');
+    background-size: cover;
+}
+#Weather{
+    background-color: black;
+    color:white;
+    outline: none;
+}
+
+#Weather::placeholder{
+
+    color:white;
+    opacity: 0.5;
+}

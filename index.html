@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/853a8fbe20.js" crossorigin="anonymous"></script>
+</head>
+</head>
+
+<body>
+
+
+    <div class="card text-center container mt-5 rounded form-control p-3" id="card1" style="width: 400px;">
+        <input id="Weather" type="text" class="mt-5 form-control" placeholder="Type City Name">
+        <button type="button" onclick="weatherData()" class="mt-3 btn btn-success ">Search <i
+                class="fa-solid fa-magnifying-glass"></i></button>
+        <div class=" mt-3" id="result"></div> <br>
+
+    </div>
+
+
+
+    </div>
+
+
+</body>
+
+<script>
+
+    function weatherData() {
+        weatherDetails = Weather.value
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${weatherDetails}&appid=b41ec3be35c7dac8aabbc21ba253137a`)
+            .then(data => data.json()).then(data => displayData(data))
+    }
+
+    function displayData(weatherdata) {
+        temperature = weatherdata.main.temp
+        temperature = temperature - 273.15
+        temperature = Math.floor(temperature)
+        weather_des = weatherdata.weather[0].description
+        Humidity = weatherdata.main.humidity
+        windspeed = weatherdata.wind.speed
+        cityname = weatherdata.name
+
+        result.innerHTML = `
+      
+     
+        <h4 class="city text-black">weather in  ${cityname} <i class="fa-solid fa-cloud text-white"></i></h4>
+        <h2 class="weat  text-black">${weather_des}</h2>
+        <h4 class="temp  text-black">${temperature}°C &nbsp  <i class="fa-solid fa-temperature-high"></i></h4>
+        <h4 class="humidity  text-black">humidity :   ${Humidity}%   </h4>
+        <h4 class="wind  text-black">Wind speed :  ${windspeed} km/h  </h4> 
+     
+     
+`
+
+
+    }
+
+
+
+</script>
+
+</html>
+</head>
+
+<body>
+
+</body>
+
+</html>
